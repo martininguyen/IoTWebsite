@@ -1,13 +1,15 @@
 ﻿
 <style>
-    .chart rect {
-        fill: steelblue;
+    .bar {
+      fill: steelblue;
     }
 
-    .chart text {
-        fill: white;
-        font: 10px sans-serif;
-        text-anchor: end;
+    .bar:hover {
+      fill: brown;
+    }
+
+    .axis--x path {
+      display: none;
     }
 </style>
 <!-- Intro Section -->
@@ -30,7 +32,7 @@
                 <h1>Chart Section</h1>
             </div>
             <div>
-                <svg class="chart"></svg>
+                <svg width="960" height="500"></svg>
             </div>
         </div>
     </div>
