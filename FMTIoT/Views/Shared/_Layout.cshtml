@@ -174,11 +174,11 @@
             var y = d3.scaleLinear()
                 .rangeRound([height, 0]);
             
-            var xAxis = svg.axis()
+            var xAxis = d3.svg.axis()
                 .scale(x)
                 .orient("bottom");
 
-            var yAxis = svg.axis()
+            var yAxis = d3.svg.axis()
                 .scale(y)
                 .orient("left");
 
