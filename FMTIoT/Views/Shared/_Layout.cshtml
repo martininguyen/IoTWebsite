@@ -163,7 +163,7 @@
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
-            var parseTime = d3.timeParse("%d-%b-%y"),
+            var parseTime = d3.time.format("%d-%b-%y").parse,
                 bisectDate = d3.bisector(function (d) { return d.date; }).left,
                 formatValue = d3.format(",.2f"),
                 formatCurrency = function (d) { return "$" + formatValue(d); };
