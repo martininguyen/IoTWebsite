@@ -266,6 +266,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Content\data2.tsv" />
     <None Include="Project_Readme.html" />
     <Content Include="Content\data.tsv" />
   </ItemGroup>

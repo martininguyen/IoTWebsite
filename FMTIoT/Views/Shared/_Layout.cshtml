@@ -156,33 +156,33 @@
 
     </script>*@
     <script>
-        var svg = d3.select("#line_chart"),
-            margin = { top: 20, right: 20, bottom: 30, left: 50 },
-            width = +svg.attr("width") - margin.left - margin.right,
-            height = +svg.attr("height") - margin.top - margin.bottom,
-            g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var svg2 = d3.select("#line_chart"),
+            margin2 = { top: 20, right: 20, bottom: 30, left: 50 },
+            width2 = +svg2.attr("width") - margin2.left - margin2.right,
+            height2 = +svg2.attr("height") - margin2.top - margin2.bottom,
+            g2 = svg2.append("g").attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
-            var parseTime = d3.time.format("%d-%b-%y").parse,
-                bisectDate = d3.bisector(function (d) { return d.date; }).left,
-                formatValue = d3.format(",.2f"),
-                formatCurrency = function (d) { return "$" + formatValue(d); };
+            var parseTime2 = d3.time.format("%d-%b-%y").parse,
+                bisectDate2 = d3.bisector(function (d) { return d.date; }).left,
+                formatValue2 = d3.format(",.2f"),
+                formatCurrency2 = function (d) { return "$" + formatValue(d); };
 
-            var x = d3.time.scale()
-                .rangeRound([0, width]);
+            var x2 = d3.time.scale()
+                .rangeRound([0, width2]);
 
-            var y = d3.scale.linear()
-                .rangeRound([height, 0]);
+            var y2 = d3.scale.linear()
+                .rangeRound([height2, 0]);
             
-            var xAxis = d3.svg.axis()
-                .scale(x)
+            var xAxis2 = d3.svg.axis()
+                .scale(x2)
                 .orient("bottom");
 
-            var yAxis = d3.svg.axis()
-                .scale(y)
+            var yAxis2 = d3.svg.axis()
+                .scale(y2)
                 .orient("left");
 
-            var line = d3.svg.line()
+            var line2 = d3.svg.line()
                 .x(function (d) { return x(d.date); })
                 .y(function (d) { return y(d.close); });
 
@@ -198,17 +198,17 @@
                     return a.date - b.date;
                 });
 
-                x.domain([data[0].date, data[data.length - 1].date]);
-                y.domain(d3.extent(data, function (d) { return d.close; }));
+                x2.domain([data[0].date, data[data.length - 1].date]);
+                y2.domain(d3.extent(data, function (d) { return d.close; }));
 
-                g.append("g")
+                g2.append("g")
                     .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
+                    .attr("transform", "translate(0," + height2 + ")")
+                    .call(xAxis2);
 
-                g.append("g")
+                g2.append("g")
                     .attr("class", "y axis")
-                    .call(yAxis)
+                    .call(yAxis2)
                     .append("text")
                     .attr("transform", "rotate(-90)")
                     .attr("y", 6)
@@ -216,39 +216,39 @@
                     .style("text-anchor", "end")
                     .text("Price ($)");
 
-                g.append("path")
+                g2.append("path")
                     .datum(data)
                     .attr("class", "line")
-                    .attr("d", line);
+                    .attr("d", line2);
 
-                var focus = g.append("g")
+                var focus2 = g2.append("g")
                 .attr("class", "focus")
                 .style("display", "none");
 
-                focus.append("circle")
+                focus2.append("circle")
                     .style("fill", "red")
                     .attr("r", 4.5);
 
-                focus.append("text")
+                focus2.append("text")
                     .style("font-size", "34px")
                     .attr("x", -4)
                     .attr("dy", "-2.35em");
-                g.append("rect")
+                g2.append("rect")
                     .attr("class", "overlay")
-                    .attr("width", width)
-                    .attr("height", height)
-                    .on("mouseover", function () { focus.style("display", null); })
-                    .on("mouseout", function () { focus.style("display", "none"); })
+                    .attr("width", width2)
+                    .attr("height", height2)
+                    .on("mouseover", function () { focus2.style("display", null); })
+                    .on("mouseout", function () { focus2.style("display", "none"); })
                     .on("mousemove", mousemove);
 
                 function mousemove() {
-                    var x0 = x.invert(d3.mouse(this)[0]),
-                        i = bisectDate(data, x0, 1),
-                        d0 = data[i - 1],
-                        d1 = data[i],
-                        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                    focus.attr("transform", "translate(" + x(d.date) + "," + y(d.close) + ")");
-                    focus.select("text").text(formatCurrency(d.close));
+                    var x02 = x2.invert(d3.mouse(this)[0]),
+                        i2 = bisectDate(data, x02, 1),
+                        d02 = data[i2 - 1],
+                        d12 = data[i2],
+                        d2 = x02 - d02.date > d12.date - x02 ? d12 : d02;
+                    focus2.attr("transform", "translate(" + x2(d2.date) + "," + y2(d2.close) + ")");
+                    focus2.select("text").text(formatCurrency(d2.close));
                 }
             });
 
