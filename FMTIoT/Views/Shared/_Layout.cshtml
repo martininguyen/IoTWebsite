@@ -186,7 +186,7 @@
                 .x(function (d) { return x(d.date); })
                 .y(function (d) { return y(d.close); });
 
-            d3.tsv("./Content/data.tsv",  function (error, data) {
+            d3.tsv("./Content/data2.tsv",  function (error, data) {
                 if (error) throw error;
 
                 data.forEach(function (d) {
