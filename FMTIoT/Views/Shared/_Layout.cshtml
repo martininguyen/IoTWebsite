@@ -166,7 +166,7 @@
             var parseTime2 = d3.time.format("%d-%b-%y").parse,
                 bisectDate2 = d3.bisector(function (d) { return d.date; }).left,
                 formatValue2 = d3.format(",.2f"),
-                formatCurrency2 = function (d) { return "$" + formatValue(d); };
+                formatCurrency2 = function (d) { return "$" + formatValue2(d); };
 
             var x2 = d3.time.scale()
                 .rangeRound([0, width2]);
@@ -243,12 +243,12 @@
 
                 function mousemove() {
                     var x02 = x2.invert(d3.mouse(this)[0]),
-                        i2 = bisectDate(data, x02, 1),
+                        i2 = bisectDate2(data, x02, 1),
                         d02 = data[i2 - 1],
                         d12 = data[i2],
                         d2 = x02 - d02.date > d12.date - x02 ? d12 : d02;
                     focus2.attr("transform", "translate(" + x2(d2.date) + "," + y2(d2.close) + ")");
-                    focus2.select("text").text(formatCurrency(d2.close));
+                    focus2.select("text").text(formatCurrency2(d2.close));
                 }
             });
 
