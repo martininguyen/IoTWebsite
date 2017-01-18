@@ -156,10 +156,10 @@
 
     </script>*@
     <script>
-        var svg = d3.select("body").append("#line_chart"),
+        var svg = d3.select("#line_chart"),
             margin = { top: 20, right: 20, bottom: 30, left: 50 },
-            width = +svg.attr("width") - margin.left - margin.right,
-            height = +svg.attr("height") - margin.top - margin.bottom,
+            width = +svg.attr("width") + margin.left + margin.right,
+            height = +svg.attr("height") + margin.top + margin.bottom,
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
@@ -182,7 +182,7 @@
                 .scale(y)
                 .orient("left");
 
-            var line = d3.line()
+            var line = d3.svg.line()
                 .x(function (d) { return x(d.date); })
                 .y(function (d) { return y(d.close); });
 
@@ -230,7 +230,7 @@
 
                 focus.append("text")
                     .attr("x", 9)
-                    .attr("dy", "1.35em");
+                    .attr("dy", ".35em");
                 g.append("rect")
                     .attr("class", "overlay")
                     .attr("width", width)
