@@ -286,7 +286,7 @@
                 if (error) throw error;
 
                 data.forEach(function (d) {
-                    d.date = parseDate(d.date);
+                    d.date = parseTime(d.date);
                     d.low = +d.low;
                     d.high = +d.high;
                 });
