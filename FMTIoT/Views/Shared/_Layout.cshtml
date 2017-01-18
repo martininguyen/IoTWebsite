@@ -155,7 +155,7 @@
             });
 
     </script>*@
-    @*<script>
+    <script>
         var svg = d3.select("#line_chart"),
             margin = { top: 20, right: 20, bottom: 30, left: 50 },
             width = +svg.attr("width") - margin.left - margin.right,
@@ -252,7 +252,7 @@
                 }
             });
 
-    </script>*@
+    </script>
     <script>
         var svg = d3.select("#bivariate"),
             margin = { top: 20, right: 20, bottom: 30, left: 50 },
@@ -261,7 +261,7 @@
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
-            var parseTime = d3.time.format("%d-%b-%y").parse;
+            var parseTime = d3.time.format("%Y%m%d").parse;
     
             var x = d3.time.scale()
                 .rangeRound([0, width]);
@@ -287,8 +287,8 @@
 
                 data.forEach(function (d) {
                     d.date = parseTime(d.date);
-                    d.low = +d.low;
                     d.high = +d.high;
+                    d.low = +d.low;
                 });
 
                 x.domain(d3.extent(data, function (d) { return d.date; }));
