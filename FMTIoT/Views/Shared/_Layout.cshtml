@@ -294,6 +294,11 @@
                 x.domain(d3.extent(data, function (d) { return d.date; }));
                 y.domain([d3.min(data, function (d) { return d.low; }), d3.max(data, function (d) { return d.high; })]);
 
+                g.append("path")
+                    .datum(data)
+                    .attr("class", "area")
+                    .attr("d", area);
+
                 g.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
@@ -309,10 +314,7 @@
                     .style("text-anchor", "end")
                     .text("Price ($)");
 
-                g.append("path")
-                    .datum(data)
-                    .attr("class", "area")
-                    .attr("d", area);
+                
             });
 
     </script>
