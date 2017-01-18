@@ -168,10 +168,10 @@
                 formatValue = d3.format(",.2f"),
                 formatCurrency = function (d) { return "$" + formatValue(d); };
 
-            var x = d3.scaleTime()
+            var x = d3.time.scale()
                 .rangeRound([0, width]);
 
-            var y = d3.scaleLinear()
+            var y = d3.scale.linear()
                 .rangeRound([height, 0]);
             
             var xAxis = d3.svg.axis()
@@ -182,7 +182,7 @@
                 .scale(y)
                 .orient("left");
 
-            var line = d3.line()
+            var line = d3.svg.line()
                 .x(function (d) { return x(d.date); })
                 .y(function (d) { return y(d.close); });
 
