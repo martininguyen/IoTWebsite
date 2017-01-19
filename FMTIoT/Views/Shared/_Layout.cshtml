@@ -166,7 +166,7 @@
             var parseTime2 = d3.time.format("%d-%b-%y").parse,
                 bisectDate2 = d3.bisector(function (d) { return d.date; }).left,
                 formatValue2 = d3.format(",.2f"),
-                formatCurrency2 = function (d) { return "$" + formatValue2(d); };
+                formatCurrency2 = function (d) { return formatValue2(d) + "°F"; };
 
             var x2 = d3.time.scale()
                 .rangeRound([0, width2]);
@@ -216,7 +216,13 @@
                     .attr("y", 6)
                     .attr("dy", ".71em")
                     .style("text-anchor", "end")
-                    .text("Price ($)");
+                    .text("Temperature (°F)");
+
+                g2.append("text")
+                   .attr("class", "tText")
+                   .attr("id", "tText")
+                   .attr("transform", "translate("+((width2/2)-150)+ "," + 50 + ")")
+                   .text("Temperature : Nothing Yet");
 
                 g2.append("path")
                     .datum(data)
@@ -252,6 +258,11 @@
                         d2 = x02 - d02.date > d12.date - x02 ? d12 : d02;
                     focus2.attr("transform", "translate(" + x2(d2.date) + "," + y2(d2.close) + ")");
                     focus2.select("text").text(formatCurrency2(d2.close));
+                    g2.select(".tText").text("Temperature: " + formatCurrency2(d2.close));
+                    if(d2.close > 300)
+                        g2.select(".tText").style("fill", "red");
+                    else
+                        g2.select(".tText").style("fill", "black");
                 }
             });
 
@@ -264,7 +275,12 @@
             g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
-            var parseTime = d3.time.format("%Y%m%d").parse;
+            var parseTime = d3.time.format("%Y%m%d").parse,
+                bisectDate = d3.bisector(function (d) { return d.date; }).left,
+                formatValue = d3.format(",.2f"),
+                formatCurrency = function (d, e) {
+                    return "H: " + formatValue(d) +"  L: "+ formatValue(e);
+                };
     
             var x = d3.time.scale()
                 .rangeRound([0, width]);
@@ -317,7 +333,36 @@
                     .style("text-anchor", "end")
                     .text("Price ($)");
 
-                
+                var focus = g.append("g")
+                .attr("class", "focus")
+                .style("display", "none");
+
+                focus.append("circle")
+                    .style("fill", "red")
+                    .attr("r", 4.5);
+
+                focus.append("text")
+                    .style("font-size", "34px")
+                    .style("font-family", "arial")
+                    .attr("x", 9)
+                    .attr("dy", "-.35em");
+                g.append("rect")
+                    .attr("class", "overlay")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .on("mouseover", function () { focus.style("display", null); })
+                    .on("mouseout", function () { focus.style("display", "none"); })
+                    .on("mousemove", mousemove);
+
+                function mousemove() {
+                    var x0 = x.invert(d3.mouse(this)[0]),
+                        i = bisectDate(data, x0, 1),
+                        d0 = data[i - 1],
+                        d1 = data[i],
+                        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                    focus.attr("transform", "translate(" + x(d.date) + "," + y(d.high) + ")");
+                    focus.select("text").text(formatCurrency(d.high, d.low));
+                }
             });
 
     </script>
