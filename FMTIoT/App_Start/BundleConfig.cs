@@ -11,7 +11,8 @@ namespace FMTIoT
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.js",
                         "~/Scripts/jquery.easing.min.js",
-                        "~/Scripts/bootstrap.js"));
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/custom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/d3").Include(
                         "~/Scripts/d3.js",

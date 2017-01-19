@@ -223,6 +223,7 @@
   <ItemGroup>
     <Content Include="Areas\bootstrap.js" />
     <Content Include="Areas\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Areas\jquery.easing.min.js" />
     <Content Include="Areas\jquery.js" />
     <Content Include="Areas\scrolling-nav.js" />

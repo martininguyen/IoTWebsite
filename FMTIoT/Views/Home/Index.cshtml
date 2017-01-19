@@ -73,10 +73,14 @@
                 <svg width="960" height="500"></svg>
             </div>*@
             <div>
-                <svg id="line_chart" width="960" height="500"></svg>
+                <input type="button" class="button" value="Line" onclick ="displayLine()" />
+                <input type="button" class="button" value="Bivariate" onclick="displayBi()" />
             </div>
-            <div>
-                <svg id="bivariate" width="960" height="500"></svg>
+            <div id="line" class="chartcontainer" style="visibility:hidden;">
+                <svg id="line_chart" class="size" width="960" height="500"></svg>
+            </div>
+            <div id="bi" class="chartcontainer" style="visibility:hidden;">
+                <svg id="bivariate" ckass="size" width="960" height="500"></svg>
             </div>
         </div>
     </div>
