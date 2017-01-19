@@ -198,6 +198,8 @@
                     return a.date - b.date;
                 });
 
+                x.domain([data[0].date, data[data.length - 1].date]);
+                y.domain(d3.extent(data, function (d) { return d.close; }));
                 x2.domain([data[0].date, data[data.length - 1].date]);
                 y2.domain(d3.extent(data, function (d) { return d.close; }));
 
@@ -218,7 +220,7 @@
 
                 g2.append("path")
                     .datum(data)
-                    .attr("class", "line2")
+                    .attr("class", "line")
                     .attr("d", line2);
 
                 var focus2 = g2.append("g")
@@ -231,8 +233,9 @@
 
                 focus2.append("text")
                     .style("font-size", "34px")
-                    .attr("x", -4)
-                    .attr("dy", "-2.35em");
+                    .style("font-family", "arial")
+                    .attr("x", 9)
+                    .attr("dy", "-.35em");
                 g2.append("rect")
                     .attr("class", "overlay")
                     .attr("width", width2)
