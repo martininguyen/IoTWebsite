@@ -63,6 +63,11 @@
     </div>
 </section>
 <!-- About Section -->
+<section id="about" class="about-section">
+
+
+</section>
+<!-- Charts Section -->
 <section id="charts" class="chart-section">
     <div class="container">
         <div class="row">
@@ -73,8 +78,8 @@
                 <svg width="960" height="500"></svg>
             </div>*@
             <div>
-                <input type="button" class="button" value="Line" onclick ="displayChart('line')" />
-                <input type="button" class="button" value="Bivariate" onclick="displayChart('bi')" />
+                <input id="lineButton" type="button" class="button" value="Line" />
+                <input id="biButton" type="button" class="button" value="Bivariate"/>
             </div>
             <div id="line" class="chartcontainer" style="display:none;">
                 <svg id="line_chart" class="size" width="960" height="500"></svg>

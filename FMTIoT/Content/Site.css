@@ -30,3 +30,11 @@ html {
     text-align: center;
     background: #eee;
 }
+
+.navbar-brand {
+    background: url(./Content/images/logoTXT.png) no-repeat;
+    background-size: 135px 35px;
+    width: 135px;
+    height: 35px;
+    text-indent: -9999px;
+}
