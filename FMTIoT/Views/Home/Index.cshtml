@@ -50,7 +50,7 @@
 <!-- Intro Section -->
 <section id="intro" class="intro-section">
     <div class="container">
-        <div class="row">
+        <div class="row middle">
             <div class="col-lg-12">
                 <img src="~/Content/images/logo.png" style="padding-bottom: 20px">
                 <p>The home portal for FMT's IoT Temperature Sensor</p>
@@ -62,29 +62,35 @@
 <!-- About Section -->
 <section id="about" class="about-section">
     <div class="container">
+        <h1 style="padding-bottom:40px;">Core Values</h1>
         <div class="row" style="min-height: 250px">
             <div id="fil" class="col-lg-4 text-center hide" data-animate="fadeInLeft">
                 <i class="fa fa-lightbulb-o fa-7x" aria-hidden="true"></i>
-                <p>Innovation</p>
+                <h6>Innovation</h6>
+                <p class="cv">The latest demonstration of FMT's Core Value. We created this IoT Temperature Sensor to showcase to potential clients an interesting project using the Particle Photon and Azure.</p>
             </div>
             <div id="fid" class="col-lg-4 text-center hide" data-animate="fadeInDown">
                 <i class="fa fa-free-code-camp fa-7x" aria-hidden="true"></i>
-                <p>Passion</p>
+                <h6>Passion</h6>
+                <p class="cv">Every team member of the IoT Project ethusiastically worked towards the completion of this project.</p>
             </div>
             <div id="fir" class="col-lg-4 text-center hide" data-animate="fadeInRight">
                 <i class="fa fa-handshake-o fa-7x" aria-hidden="true"></i>
-                <p>Collaboration</p>
+                <h6>Collaboration</h6>
+                <p class="cv">The IoT Team performed their task in accordance with our project timeline and with our combined efforts, finish this project in a timely manner.</p>
             </div>
         </div>
         <hr />
         <div class="row" style="min-height: 250px">
             <div id="fiu" class="col-lg-6 text-center hide" data-animate="fadeInUp">
                 <i class="fa fa-balance-scale fa-7x" aria-hidden="true"></i>
-                <p>Integrity</p>
+                <h6>Integrity</h6>
+                <p class="cv">Transparency and communication allowed us to discover which routes were possible to develop the sensor.</p>
             </div>
             <div id="fiu2" class="col-lg-6 text-center hide" data-animate="fadeInUp">
                 <i class="fa fa-hand-peace-o fa-7x" aria-hidden="true"></i>
-                <p>Service Excellence</p>
+                <h6>Service Excellence</h6>
+                <p class="cv">With this product, we hope to show current and future clients the potential of FMT's employees.</p>
             </div>
         </div>
     </div>
@@ -95,7 +101,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Charts</h1>
+                <h1>Temperature Readings</h1>
             </div>
             @*<div>
                 <svg width="960" height="500"></svg>
@@ -104,10 +110,10 @@
                 <input id="lineButton" type="button" class="button" value="Line" />
                 <input id="biButton" type="button" class="button" value="Bivariate"/>
             </div>
-            <div id="line" class="chartcontainer" style="display:none;">
+            <div id="line" class="chartcontainer" style="display:none; font-size: 10px;">
                 <svg id="line_chart" class="size" width="960" height="500"></svg>
             </div>
-            <div id="bi" class="chartcontainer" style="display:none;">
+            <div id="bi" class="chartcontainer" style="display:none; font-size: 10px;">
                 <svg id="bivariate" ckass="size" width="960" height="500"></svg>
             </div>
         </div>
