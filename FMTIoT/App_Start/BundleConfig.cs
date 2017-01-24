@@ -27,7 +27,9 @@ namespace FMTIoT
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.css"));
+                      "~/Content/site.css",
+                      "~/Content/animate.css",
+                      "~/Content/font-awesome/css/font-awesome.css"));
         }
     }
 }
