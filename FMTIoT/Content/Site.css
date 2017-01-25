@@ -68,6 +68,7 @@ h6{
 
 .navbar{
     min-height: 70px;
+
 }
 
 /* Intro-Section Style */
@@ -106,9 +107,38 @@ h6{
 
 /* Chart-Section Style */
 .chart-section {
-    height: 200%;
+    height: 100%;
     width: 100%;
     padding-top: 100px;
     text-align: center;
     background: #fff;
+}
+
+/* Footer Style*/
+
+ul.social-buttons {
+    margin-bottom: 12px;
+    margin-right: 100px;
+    list-style: none;
+    display: inline-block;
+    float: right;
+}
+
+ul.social-buttons li {
+    display: inline-block;
+    margin-right: 18px;
+}
+
+ul.social-buttons li a{
+}
+
+ul.social-buttons li a i:hover,
+ul.social-buttons li a i:focus,
+ul.social-buttons li a i:active {
+    color: #0085ad;
+
+}
+
+.fa-3x{
+    color: #0BA7C3;
 }

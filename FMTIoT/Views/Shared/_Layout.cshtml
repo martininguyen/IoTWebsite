@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav">
                     <li><a class="page-scroll" href="#intro">Home</a></li>
                     <li><a class="page-scroll" href="#about">About</a></li>
-                    <li><a class="page-scroll" href="#charts">Our Office Temperature</a></li>
+                    <li><a class="page-scroll" href="#charts">Monitor</a></li>
                 </ul>
             </div>
         </div>
@@ -43,7 +43,17 @@
     @RenderBody()
     <hr />
         <footer>
-            <p style="padding-left: 8px;">&copy; @DateTime.Now.Year FMT CONSULTANTS, LLC.</p>
+            <div class="col-lg-4">
+                <p style="padding-left: 8px; padding-bottom: 10px;">&copy; @DateTime.Now.Year FMT CONSULTANTS, LLC.</p>
+            </div>
+            <div class="col-lg-8">
+                <ul class="social-buttons" style="padding-bottom : 6px; padding-top : 10px">
+                    <li><a href="https://www.facebook.com/fmtconsultants" target=""><i class="fa fa-facebook-square fa-3x"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/fmt-consultants-llc" target=""><i class="fa fa-linkedin-square fa-3x"></i></a></li>
+                    <li><a href="https://twitter.com/fmtconsultants" target=""><i class="fa fa-twitter-square fa-3x"></i></a></li>
+                    <li><a href="http://www.fmtconsultants.com/blog/" target=""><i class="fa fa-comment fa-3x"></i></a></li>
+                </ul>
+            </div>
         </footer>
 
 
