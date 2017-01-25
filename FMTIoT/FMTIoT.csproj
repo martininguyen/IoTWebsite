@@ -229,6 +229,7 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\images\logoTXT.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Areas\jquery.easing.min.js" />
     <Content Include="Areas\jquery.js" />
@@ -308,6 +309,11 @@
     <Content Include="Content\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
     <Content Include="Content\data.tsv" />
   </ItemGroup>
