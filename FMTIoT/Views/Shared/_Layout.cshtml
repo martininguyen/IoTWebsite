@@ -44,7 +44,7 @@
     <hr />
         <footer>
             <div class="col-lg-4">
-                <p style="padding-left: 8px; padding-bottom: 10px;">&copy; @DateTime.Now.Year FMT CONSULTANTS, LLC.</p>
+                <p style="padding-left: 8px; padding-top: 10px;">&copy; @DateTime.Now.Year FMT CONSULTANTS, LLC.</p>
             </div>
             <div class="col-lg-8">
                 <ul class="social-buttons" style="padding-bottom : 6px; padding-top : 10px">
@@ -175,7 +175,7 @@
             g2 = svg2.append("g").attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
             //var parseTime = d3.timeParse("%d-%b-%y");
-            var parseTime2 = d3.time.format("%d-%b-%y").parse,
+                var parseTime2 = d3.time.format("%Y-%m-%dT%X").parse,
                 bisectDate2 = d3.bisector(function (d) { return d.date; }).left,
                 formatValue2 = d3.format(",.2f"),
                 formatCurrency2 = function (d) { return formatValue2(d) + "°F"; };
@@ -198,7 +198,7 @@
                 .x(function (d) { return x(d.date); })
                 .y(function (d) { return y(d.close); });
 
-            d3.tsv("./Content/data2.tsv",  function (error, data) {
+            d3.csv("./Content/data3.csv",  function (error, data) {
                 if (error) throw error;
 
                 data.forEach(function (d) {
