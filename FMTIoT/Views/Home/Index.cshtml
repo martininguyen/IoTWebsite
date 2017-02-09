@@ -53,6 +53,7 @@
         <div class="row middle animated bounceIn" data-ng-animate="bounceIn">
             <div class="col-lg-12">
                 <img src="~/Content/images/logo.png" style="padding-bottom: 20px">
+                <i></i>
                 <p>The home portal for FMT's IoT Temperature Sensor</p>
                 <a class="btn btn-default page-scroll" href="#about">Learn More About Us</a>
             </div>
@@ -107,9 +108,18 @@
             <div class="col-lg-12">
                 <h1>Temperature Readings</h1>
             </div>
-            @*<div>
-                <svg width="960" height="500"></svg>
-            </div>*@
+        </div>
+        <div class="row">
+            <div id="slider">
+                <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+            <br />
+            <div>
+                <button id="sendsmsHot" type="button" class="btn btn-danger" value="sendsms" onclick="javascript: return sms();">Too Hot?</button>
+                <button id="sendsmsCold" type="button" class="btn btn-info" value="sendsms" onclick="javascript: return sms();">Too Cold?</button>
+            </div>
+            <br />
+            <br />
             <div>
                 <input id="lineButton" type="button" class="button" value="Line" />
                 <input id="biButton" type="button" class="button" value="Bivariate"/>

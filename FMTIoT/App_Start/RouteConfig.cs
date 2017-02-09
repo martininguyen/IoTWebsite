@@ -18,6 +18,12 @@ namespace FMTIoT
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Sms",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Sms", action = "SMSSent", id = UrlParameter.Optional }
+            );
         }
     }
 }

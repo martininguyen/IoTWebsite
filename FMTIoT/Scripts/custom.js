@@ -33,3 +33,58 @@ $(window).scroll(function () {
     }
 });
 
+
+    var handle = $( "#custom-handle" );
+    $( "#slider" ).slider({
+        create: function() {
+            handle.text( $( this ).slider( "value" ) );
+        },
+        slide: function( event, ui ) {
+            handle.text( ui.value );
+        }
+    });
+   
+
+function sms() {
+    var value = $("#slider").slider("value");
+    $("#sendsmsHot").click(function () {
+        $.ajax({
+            url: "/Home/SendTextToHot",
+            type: "POST",
+            data: { temp: value },
+            success: function () {
+                $(".navbar-inverse").css("background-color", " #CE2029");
+                $(".navbar-inverse").css("border-color", " #CE2029");
+                $("img").hide();
+                $(".navbar-brand").hide();
+                $("i").removeClass();
+                $("i").addClass("fa fa-free-code-camp fa-7x animated pulse");
+                $("#fid").removeClass("fa-7x");
+                $("#fid").addClass("fa-10x");
+            },
+            error: function () {
+            }
+        });
+    });
+
+    $("#sendsmsCold").click(function () {
+        $.ajax({
+            url: "/Home/SendTextToCold",
+            type: "POST",
+            data: { temp: value },
+            success: function () {
+                $(".navbar-inverse").css("background-color", " #A5F2F3");
+                $(".navbar-inverse").css("border-color", " #A5F2F3");
+                $("img").hide();
+                $(".navbar-brand").hide();
+                $("i").removeClass();
+                $("i").addClass("fa fa-snowflake-o fa-7x animated pulse");
+                $("#fid").removeClass("fa-7x");
+                $("#fid").addClass("fa-10x");
+            },
+            error: function () {
+            }
+        });
+    });
+}
+

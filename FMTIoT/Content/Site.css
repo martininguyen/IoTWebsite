@@ -7,7 +7,6 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Montserrat';
-    color: #EA665B;
 }
 
 html {
@@ -55,8 +54,11 @@ h6{
     font-size: 7em;
 }
 
+.fa-10x{
+    font-size: 10em;
+}
+
 .fmtcolor{
-    color: #0BA7C3;
 }
 
 
@@ -84,6 +86,7 @@ h6{
 /* Intro-Section Style */
 .intro-section {
     height: 100%;
+    min-height: 1500px;
     width: 100%;
     padding-top: 100px;
     text-align: center;
@@ -103,6 +106,7 @@ h6{
 .about-section {
     height: 100%;
     width: 100%;
+    min-height: 1200px;
     padding-top: 100px;
     text-align: center;
     background: #eee;
@@ -114,10 +118,10 @@ h6{
 }
 
 
-
 /* Chart-Section Style */
 .chart-section {
     height: 100%;
+    min-height: 1500px;
     width: 100%;
     padding-top: 100px;
     text-align: center;
