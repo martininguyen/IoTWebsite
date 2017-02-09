@@ -53,14 +53,14 @@ function sms() {
             type: "POST",
             data: { temp: value },
             success: function () {
-                $(".navbar-inverse").css("background-color", " #CE2029");
-                $(".navbar-inverse").css("border-color", " #CE2029");
+                $("i").removeClass();
+                $("body").css("color", "#CE2029");
+                $(".navbar-inverse").css("background-color", " #9C2A00");
+                $(".navbar-inverse").css("border-color", " #9C2A00");
                 $("img").hide();
                 $(".navbar-brand").hide();
-                $("i").removeClass();
+                
                 $("i").addClass("fa fa-free-code-camp fa-7x animated pulse");
-                $("#fid").removeClass("fa-7x");
-                $("#fid").addClass("fa-10x");
             },
             error: function () {
             }
@@ -73,14 +73,13 @@ function sms() {
             type: "POST",
             data: { temp: value },
             success: function () {
-                $(".navbar-inverse").css("background-color", " #A5F2F3");
-                $(".navbar-inverse").css("border-color", " #A5F2F3");
+                $("i").removeClass();
+                $("body").css("color", "#A5F2F3")
+                $(".navbar-inverse").css("background-color", " #FFFFFF");
+                $(".navbar-inverse").css("border-color", " #FFFFFF");
                 $("img").hide();
                 $(".navbar-brand").hide();
-                $("i").removeClass();
                 $("i").addClass("fa fa-snowflake-o fa-7x animated pulse");
-                $("#fid").removeClass("fa-7x");
-                $("#fid").addClass("fa-10x");
             },
             error: function () {
             }
