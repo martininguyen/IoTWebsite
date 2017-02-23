@@ -20,8 +20,18 @@ using Twilio.TwiML;
 using System.Web.Http;
 using Twilio.TwiML.Mvc;
 
+
 namespace FMTIoT.Controllers
 {
+    public class IoTData
+    {
+        public string TempF { get; set; }
+
+        public string currTemp()
+        {
+            return TempF; 
+        }
+    }
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -69,7 +79,6 @@ namespace FMTIoT.Controllers
 
             return null;
         }
-
 
     }
     /*
@@ -145,7 +154,9 @@ namespace FMTIoT.Controllers
             }
         }
 
-    } */
-    
+        
 
+    } */
+
+   
 }

@@ -110,8 +110,24 @@
             </div>
         </div>
         <div class="row">
-            <div id="slider">
-                <div id="custom-handle" class="ui-slider-handle"></div>
+            <div class="row">
+                <div id="tempF"></div>
+                <button id="currTemp" type="button" class="btn btn-default" value="currTemp" onclick="javascript: return consumeGetLatest()">CurrTemp</button>
+            </div>
+            <div class="row">
+                <p>
+                    <label for="range">Temperature Range:</label>
+                    <input type="text" id="range" readonly style="border:0; color:#000000; font-weight:bold;">
+                </p>
+                <div id="slider-range"></div>
+                <br />
+                <button id="configRange" type="button" class="btn btn-default" value="config" onclick="">Adjust Temperature Range</button>
+            </div>
+            <br />
+            <div class="row"></div>
+                <div id="slider">
+                    <div id="custom-handle" class="ui-slider-handle"></div>
+                </div>
             </div>
             <br />
             <div>
@@ -128,10 +144,10 @@
                 <svg id="line_chart" class="size" width="960" height="500"></svg>
             </div>
             <div id="bi" class="chartcontainer" style="display:none; font-size: 10px;">
-                <svg id="bivariate" ckass="size" width="960" height="500"></svg>
+                <svg id="bivariate" class="size" width="960" height="500"></svg>
             </div>
         </div>
-    </div>
+    
 </section>
 
 

@@ -35,7 +35,9 @@ $(window).scroll(function () {
 
 
     var handle = $( "#custom-handle" );
-    $( "#slider" ).slider({
+    $("#slider").slider({
+        min: 60,
+        max: 85,
         create: function() {
             handle.text( $( this ).slider( "value" ) );
         },
@@ -43,6 +45,18 @@ $(window).scroll(function () {
             handle.text( ui.value );
         }
     });
+
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 65,
+        max: 85,
+        values: [ 68, 75],
+        slide: function( event, ui ) {
+            $( "#range" ).val( ui.values[ 0 ] + "F" + " - " + ui.values[ 1 ] + "F" );
+        }
+    });
+    $( "#range" ).val($( "#slider-range" ).slider( "values", 0 ) + $( "#slider-range" ).slider( "values", 1 ) );
+
    
 
 function sms() {
@@ -59,7 +73,6 @@ function sms() {
                 $(".navbar-inverse").css("border-color", " #9C2A00");
                 $("img").hide();
                 $(".navbar-brand").hide();
-                
                 $("i").addClass("fa fa-free-code-camp fa-7x animated pulse");
             },
             error: function () {
@@ -85,5 +98,24 @@ function sms() {
             }
         });
     });
+}
+
+/*
+function readEventHubData() {
+    
+    $.getJSON("/Home/PullCurrentTemp", function (data) {
+        $.each(data, function (key, val) {
+            $("#currtemp").attr()
+        })
+    })
+        
+} */
+
+function consumeGetLatest() {
+    $.getJSON("/Home/getLatest", function (data) {
+        $.each(data, function (i, data){
+            $("#tempF").append(data + "F");
+        })
+    })
 }
 
