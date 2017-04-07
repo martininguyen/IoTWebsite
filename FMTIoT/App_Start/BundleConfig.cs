@@ -13,7 +13,7 @@ namespace FMTIoT
                         "~/Scripts/jquery.easing.min.js",
                         "~/Scripts/jquery-ui.js",
                         "~/Scripts/bootstrap.js",
-
+                        "~/Scripts/jquery.knob.js",
                         "~/Scripts/custom.js"));
                 
 

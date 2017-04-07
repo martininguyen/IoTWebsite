@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1320 498 169 117">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #70c6ff;
+        font-size: 100px;
+        font-family: MoskBold700, "Mosk 700";
+        letter-spacing: -0.09em;
+      }
+
+      .cls-2 {
+        fill: #ee6a5e;
+        font-size: 50px;
+        font-family: MoskSemi-Bold600, "Mosk 600";
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(1102 370)">
+    <text id="FMT" class="cls-1" transform="translate(218 222)"><tspan x="0" y="0">FMT</tspan></text>
+    <text id="I" class="cls-2" transform="translate(311 222)"><tspan x="0" y="0">I</tspan></text>
+    <text id="o" class="cls-2" transform="translate(321 222)"><tspan x="0" y="0">o</tspan></text>
+    <text id="T" class="cls-2" transform="translate(338 222)"><tspan x="0" y="0">T</tspan></text>
+  </g>
+</svg>

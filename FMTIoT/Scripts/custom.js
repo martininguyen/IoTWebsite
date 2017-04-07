@@ -33,7 +33,7 @@ $(window).scroll(function () {
     }
 });
 
-
+/*
     var handle = $( "#custom-handle" );
     $("#slider").slider({
         min: 60,
@@ -45,59 +45,58 @@ $(window).scroll(function () {
             handle.text( ui.value );
         }
     });
+*/
 
-    $( "#slider-range" ).slider({
-        range: true,
-        min: 65,
-        max: 85,
-        values: [ 68, 75],
-        slide: function( event, ui ) {
-            $( "#range" ).val( ui.values[ 0 ] + "F" + " - " + ui.values[ 1 ] + "F" );
-        }
-    });
-    $( "#range" ).val($( "#slider-range" ).slider( "values", 0 ) + $( "#slider-range" ).slider( "values", 1 ) );
+var rangeLow;
+var rangeHigh;
+$("#slider-range").slider({
+    range: true,
+    min: 65,
+    max: 95,
+    values: [68, 75],
+    slide: function (event, ui) {
+        $("#range").val(ui.values[0] + "°F" + " - " + ui.values[1] + "°F");
+    }
+});
 
-   
+function changeTempRange() {
+    var rangeLow = $("#slider-range").slider("values", 0);
+    var rangeHigh = $("#slider-range").slider("values", 1);
+    $("#configRange").click(function () {
+        $.ajax({
+            url: "/Home/updateTempRange",
+            type: "POST",
+            data: { tempHigh: rangeHigh, tempLow: rangeLow },
+            success: function(){
+                alert(rangeLow + "," + rangeHigh)
+            }
+        })
+    })
+}
+
+
+
+$(".dial").knob({
+    'min': 60,
+    'max': 95
+});
 
 function sms() {
-    var value = $("#slider").slider("value");
-    $("#sendsmsHot").click(function () {
+    var value = $(".dial").val();
+
+    $("#sendsms").click(function () {
         $.ajax({
-            url: "/Home/SendTextToHot",
+            url: "/Home/SendText",
             type: "POST",
             data: { temp: value },
             success: function () {
-                $("i").removeClass();
-                $("body").css("color", "#CE2029");
-                $(".navbar-inverse").css("background-color", " #9C2A00");
-                $(".navbar-inverse").css("border-color", " #9C2A00");
-                $("img").hide();
-                $(".navbar-brand").hide();
-                $("i").addClass("fa fa-free-code-camp fa-7x animated pulse");
             },
+
             error: function () {
             }
         });
     });
 
-    $("#sendsmsCold").click(function () {
-        $.ajax({
-            url: "/Home/SendTextToCold",
-            type: "POST",
-            data: { temp: value },
-            success: function () {
-                $("i").removeClass();
-                $("body").css("color", "#A5F2F3")
-                $(".navbar-inverse").css("background-color", " #FFFFFF");
-                $(".navbar-inverse").css("border-color", " #FFFFFF");
-                $("img").hide();
-                $(".navbar-brand").hide();
-                $("i").addClass("fa fa-snowflake-o fa-7x animated pulse");
-            },
-            error: function () {
-            }
-        });
-    });
 }
 
 /*
@@ -112,10 +111,45 @@ function readEventHubData() {
 } */
 
 function consumeGetLatest() {
-    $.getJSON("/Home/getLatest", function (data) {
-        $.each(data, function (i, data){
-            $("#tempF").append(data + "F");
-        })
+    $.get("/Home/getLatest", function (data) {
+        $("#SwamisCurr").html('');
+        $("#SwamisCurr").append(data + "°F");
+
     })
+
+    var timeoutID = setTimeout('consumeGetLatest()', 6000);
+}
+
+
+var carousel = $(".carousel"),
+    currdeg = 0,
+    xcurr = 0,
+    click = 2;
+
+$(".right").on("click", { d: "r" }, rotate);
+$(".left").on("click", { d: "l" }, rotate);
+
+function rotate(e) {
+    if (e.data.d == "r") {
+        if (click < 3) {
+            currdeg = currdeg - 120;
+            xcurr = xcurr - 700;
+            click++;
+        }
+    }
+    if (e.data.d == "l") {
+        if (click > 1) {
+            currdeg = currdeg + 120;
+            xcurr = xcurr + 700;
+            click--;
+        }
+
+    }
+    carousel.css({
+        "-webkit-transform": "rotateY(" + currdeg + "deg) translateX(" + xcurr + "px)",
+        "-moz-transform": "rotateY(" + currdeg + "deg) translateX(" + xcurr + "px)",
+        "-o-transform": "rotateY(" + currdeg + "deg) translateX(" + xcurr + "px)",
+        "transform": "rotateY(" + currdeg + "deg) translateX(" + xcurr + "px)"
+    });
 }
 

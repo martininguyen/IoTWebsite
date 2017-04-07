@@ -1,66 +1,75 @@
-﻿
-@*<style>
-    .bar {
-      fill: steelblue;
-    }
+﻿@*<style>
+        .bar {
+          fill: steelblue;
+        }
 
-    .bar:hover {
-      fill: brown;
-    }
+        .bar:hover {
+          fill: brown;
+        }
 
-    .axis--x path {
-      display: none;
-    }
-</style>*@
+        .axis--x path {
+          display: none;
+        }
+    </style>*@
 <style>
-
     .axis path,
     .axis line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
     }
 
     .x.axis path {
-      display: none;
+        display: none;
     }
 
     .line {
-      fill: none;
-      stroke: #0BA7C3;
-      stroke-width: 1.5px;
+        fill: none;
+        stroke: #70C6FF;
+        stroke-width: 1.5px;
     }
+
     .tText {
         font-size: 30px;
     }
+
     .overlay {
-      fill: none;
-      pointer-events: all;
+        fill: none;
+        pointer-events: all;
     }
 
     .focus circle {
-      fill: none;
-      stroke: #0BA7C3;
+        fill: none;
+        stroke: #70C6FF;
     }
 
     .area {
-      fill: #0BA7C3;
+        fill: #70C6FF;
     }
 </style>
 <!-- Intro Section -->
 <section id="intro" class="intro-section">
     <div class="container">
-        <div class="row middle animated bounceIn" data-ng-animate="bounceIn">
-            <div class="col-lg-12">
-                <img src="~/Content/images/logo.png" style="padding-bottom: 20px">
-                <i></i>
-                <p>The home portal for FMT's IoT Temperature Sensor</p>
-                <a class="btn btn-default page-scroll" href="#about">Learn More About Us</a>
+        <div class="row">
+            <h1 class="headerheight">Current Temperature</h1>
+        </div>
+        <div class="row">
+            <div class="biggerbox">
+                <div class="carousel">
+                    <div class="a"><p>Swamis</p><div class="box"><div id="SwamisCurr" class="innerbox"></div></div></div>
+                    <div class="b"><p>De Pree</p><div class="box"><div class="innerbox">68°F</div></div></div>
+                    <div class="c"><p>Cardiff</p><div class="box"><div class="innerbox">100°F</div></div></div>
+                </div>
             </div>
         </div>
-        <div>
-            <div class="row">
-            </div>
+        <div class="row">
+            <div class="right btn btn-fmt">Next</div>
+            <div class="instructions">Rotate Left or Right</div>
+            <div class="left btn btn-fmt">Prev</div>
+        </div>
+        <div class="row">
+            <div class="adjustbutton"><a class="btn btn-fmt page-scroll landingbutton" href="#adjust">Adjust <br /> Temperature</a></div>
+            <div class="chartsbutton"><a class="btn btn-fmt page-scroll landingbutton" href="#charts">Scroll To <br /> Charts</a></div>
         </div>
     </div>
 </section>
@@ -101,6 +110,39 @@
     </div>
 
 </section>
+
+<!-- Adjust Temp Section-->
+<section id="adjust" class="adjust-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Adjust Temperature</h1>
+            </div>
+        </div>
+        <div class="row">
+            <input class="dial" data-fgColor="#70C6FF" data-angleOffset=-125 data-angleArc=250 data-rotation="anticlockwise" value="70">
+        </div>
+        <div class="row">
+            <button id="sendsms" type="button" class="btn btn-fmt2" value="sendsms" onclick="javascript: return sms();">Notify Us To Change</button>
+        </div>
+        <div class="row">
+            <h1>Adjust Temperature Range for Auto SMS</h1>
+        </div>
+        <div class="row">
+
+            <p>
+                <label for="range">Temperature Range:</label>
+                <input type="text" id="range" readonly style="border:0; color:#000000; font-weight:bold;" value="68°F - 75°F">
+            </p>
+            <div id="slider-range"></div>
+            <br />
+            <button id="configRange" type="button" class="btn btn-fmt" value="config" onclick="javascript: return changeTempRange();">Adjust Temperature Range</button>
+
+        </div>
+    </div>
+
+</section>
+
 <!-- Charts Section -->
 <section id="charts" class="chart-section">
     <div class="container">
@@ -109,45 +151,41 @@
                 <h1>Temperature Readings</h1>
             </div>
         </div>
+        <!--
         <div class="row">
-            <div class="row">
-                <div id="tempF"></div>
-                <button id="currTemp" type="button" class="btn btn-default" value="currTemp" onclick="javascript: return consumeGetLatest()">CurrTemp</button>
-            </div>
-            <div class="row">
-                <p>
-                    <label for="range">Temperature Range:</label>
-                    <input type="text" id="range" readonly style="border:0; color:#000000; font-weight:bold;">
-                </p>
-                <div id="slider-range"></div>
-                <br />
-                <button id="configRange" type="button" class="btn btn-default" value="config" onclick="">Adjust Temperature Range</button>
-            </div>
+            <p>
+                <label for="range">Temperature Range:</label>
+                <input type="text" id="range" readonly style="border:0; color:#000000; font-weight:bold;">
+            </p>
+            <div id="slider-range"></div>
             <br />
-            <div class="row"></div>
-                <div id="slider">
-                    <div id="custom-handle" class="ui-slider-handle"></div>
-                </div>
-            </div>
-            <br />
-            <div>
-                <button id="sendsmsHot" type="button" class="btn btn-danger" value="sendsms" onclick="javascript: return sms();">Too Hot?</button>
-                <button id="sendsmsCold" type="button" class="btn btn-info" value="sendsms" onclick="javascript: return sms();">Too Cold?</button>
-            </div>
-            <br />
-            <br />
-            <div>
-                <input id="lineButton" type="button" class="button" value="Line" />
-                <input id="biButton" type="button" class="button" value="Bivariate"/>
-            </div>
-            <div id="line" class="chartcontainer" style="display:none; font-size: 10px;">
-                <svg id="line_chart" class="size" width="960" height="500"></svg>
-            </div>
-            <div id="bi" class="chartcontainer" style="display:none; font-size: 10px;">
-                <svg id="bivariate" class="size" width="960" height="500"></svg>
-            </div>
+            <button id="configRange" type="button" class="btn btn-default" value="config" onclick="">Adjust Temperature Range</button>
         </div>
-    
+
+        <br />
+        <div id="slider">
+            <div id="custom-handle" class="ui-slider-handle"></div>
+        </div>
+
+        <!--
+        <div>
+            <button id="sendsmsHot" type="button" class="btn btn-danger" value="sendsms" onclick="javascript: return sms();">Too Hot?</button>
+            <button id="sendsmsCold" type="button" class="btn btn-fmt" value="sendsms" onclick="javascript: return sms();">Too Cold?</button>
+        </div>
+        -->
+
+        <div>
+            <input id="lineButton" type="button" class="btn btn-fmt displaybutton" value="Line" />
+            <input id="biButton" type="button" class="btn btn-fmt displaybutton" value="Bivariate" />
+        </div>
+        <div id="line" class="chartcontainer" style="display:none; font-size: 10px;">
+            <svg id="line_chart" class="size" width="960" height="500"></svg>
+        </div>
+        <div id="bi" class="chartcontainer" style="display:none; font-size: 10px;">
+            <svg id="bivariate" class="size" width="960" height="500"></svg>
+        </div>
+    </div>
+
 </section>
 
 
